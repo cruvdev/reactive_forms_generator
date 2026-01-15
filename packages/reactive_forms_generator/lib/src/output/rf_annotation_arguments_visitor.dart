@@ -41,6 +41,8 @@ class ClassRenameVisitor extends GeneralizingAstVisitor<void> {
   void visitClassDeclaration(ClassDeclaration node) {
     if (node is ClassDeclarationImpl) {
       final newNode = ClassDeclarationImpl(
+        namePart: node.namePart,
+        body: node.body,
         comment: null,
         metadata: node.metadata
             // .where(
@@ -49,7 +51,6 @@ class ClassRenameVisitor extends GeneralizingAstVisitor<void> {
             .toList(),
         augmentKeyword: node.augmentKeyword,
         abstractKeyword: node.abstractKeyword,
-        macroKeyword: node.macroKeyword,
         sealedKeyword: node.sealedKeyword,
         baseKeyword: node.baseKeyword,
         interfaceKeyword: node.interfaceKeyword,
